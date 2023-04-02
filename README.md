@@ -13,7 +13,9 @@ This project generates animations for various mathematical [attractors](https://
 
 ## Available attractors
 * Halvorsen
-$$\begin{equation}\begin{cases}
+
+$$
+\begin{equation}\begin{cases}
         \frac{dx}{dt}=-a\cdot x-4\cdot y-4\cdot z-y\cdot y\\
         \frac{dy}{dt}=-a\cdot y-4\cdot z-4\cdot x-z\cdot z\\
         \frac{dy}{dt}=-a\cdot z-4\cdot x-4\cdot y-x\cdot x\\
