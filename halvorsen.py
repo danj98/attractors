@@ -3,15 +3,13 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from scipy.integrate import solve_ivp
 
-# Random seed
-np.random.seed(1)
 # Number of points
-n = 1000
+n = 10000
 # Create initial point
 x0, y0, z0 = (1, 0, 0)
 
 a = 1.4
-tmax = 1000
+tmax = 100
 
 
 # A single step for a Halvorsen attractor
@@ -32,9 +30,11 @@ y_upd = np.zeros(len(interpolation))
 z_upd = np.zeros(len(interpolation))
 
 # Create 3d scatter plot
-fig = plt.figure()
+plt.style.use('dark_background')
+fig = plt.figure(figsize=(10, 6), dpi=80)
 ax = fig.add_subplot(projection="3d")
 
+ax.view_init(30, -10)
 ax.xaxis.pane.fill = False
 ax.yaxis.pane.fill = False
 
@@ -47,7 +47,17 @@ def update_coordinates(i):
     progress = (i / n) * 100
     print("Progress: {:.1f}%".format(progress))
     ax.clear()
+    ax.view_init(30, -10 + i/4)
     ax.plot(x_upd[:i], y_upd[:i], z_upd[:i])
+
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.zaxis.line.set_lw(0.)
+    ax.set_zticks([])
+
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
+    ax.set_zticklabels([])
 
 
 # Setting axis properties
@@ -58,5 +68,6 @@ ax.set(zlim3d=(-10, 10), zlabel="Z")
 
 # Creating animation
 ani = FuncAnimation(fig, update_coordinates, np.arange(n), interval=20, repeat=False)
+print("100%%\nSaving animation")
 ani.save("output/halvorsen.gif", dpi=300, writer="pillow", fps=50)
 print("Done!")
