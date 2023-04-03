@@ -23,3 +23,15 @@ $$
     \end{cases} &&
 \end{flalign}
 $$
+
+* **Lorenz**
+
+$$
+\begin{flalign}
+    \begin{cases}
+        \frac{dx}{dt}=\sigma(y-x)\\
+        \frac{dy}{dt}=x(\rho -z)-y\\
+        \frac{dy}{dt}=xy-\Beta z\\
+    \end{cases} &&
+\end{flalign}
+$$
